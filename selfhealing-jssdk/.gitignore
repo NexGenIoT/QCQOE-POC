@@ -1,0 +1,14 @@
+.idea/
+node_modules
+
+stats.json
+
+npm-debug.log
+.tmp
+.vscode/
+package-lock.json
+npm-debug.log.*
+yarn.lock
+npm-debug.log
+server-build.js
+dist/
