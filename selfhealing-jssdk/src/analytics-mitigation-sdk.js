@@ -82,8 +82,8 @@ var stopPingEventkc = 0
 
 // ========================================================================= //
 //Endpoint Details
-const KDoRegistrationEndpoint = "https://register-qoe.selfheal.com/register-session"//"https://register-qoe.selfheal.com/register-session"//"https://register.selfheal.com/register-session"
-const KGETMitigationEndpoint = "https://register-qoe.selfheal.com/get-mitigation-config"//"https://register-qoe.selfheal.com/get-mitigation-config"//"https://register.selfheal.com/get-mitigation-config"
+const KDoRegistrationEndpoint = "http://3.109.143.177:8091/register-session"//"https://register-qoe.selfheal.com/register-session"//"https://register.selfheal.com/register-session"
+const KGETMitigationEndpoint = "http://3.109.143.177:8091/get-mitigation-config"//"https://register-qoe.selfheal.com/get-mitigation-config"//"https://register.selfheal.com/get-mitigation-config"
 const KSendBeaconDefaultEndpoint = "http://3.109.143.177:8081/api/analysis" //"https://beacon.selfheal.com/api/analysis"--dev//https://beacon-qoe.selfheal.com/api/analysis
 const KGetIPEndpoint = `https://api.ipify.org/?format=json`
 const devToken = "MS7AGKysN9luNSvbIE8mUHqEVYUmJDnJFakro5ZYwUvoqXiczR53AaL5CeRZ44UJ"
@@ -1427,6 +1427,7 @@ class TSAnalyticsMitigtionSDKImpl {
 
 
         let _StopConfiginterval = setInterval(() => {
+            console.log('stopPingEventkc', stopPingEventkc, _impl._getTimeDifference(), _impl._getPrevEvent())
             if (stopPingEventkc <= _impl._getTimeDifference() && _impl._getPrevEvent() == "PAUSED") {
                 clearInterval(_configTimer)
                 clearInterval(_StopConfiginterval)
@@ -1754,8 +1755,9 @@ class TSAnalyticsMitigtionSDKImpl {
 
         if (response != null && response.registration_response != null) {
             if (response.registration_response.bu != null) {
-                _beaconUrl = `${response.registration_response.bu}/api/analysis`
-                // _beaconUrl =KSendBeaconDefaultEndpoint// KSendBeaconDefaultEndpointNew
+                console.log('_beaconUrl_.bu', response.registration_response.bu)
+                // _beaconUrl = `${response.registration_response.bu}/api/analysis` // TODO: should be dynamic 
+                _beaconUrl = KSendBeaconDefaultEndpoint// KSendBeaconDefaultEndpointNew
             } else {
                 _beaconUrl = KSendBeaconDefaultEndpoint// KSendBeaconDefaultEndpointNew  
             }
