@@ -84,7 +84,7 @@ var stopPingEventkc = 0
 //Endpoint Details
 const KDoRegistrationEndpoint = "https://register-qoe.selfheal.com/register-session"//"https://register-qoe.selfheal.com/register-session"//"https://register.selfheal.com/register-session"
 const KGETMitigationEndpoint = "https://register-qoe.selfheal.com/get-mitigation-config"//"https://register-qoe.selfheal.com/get-mitigation-config"//"https://register.selfheal.com/get-mitigation-config"
-const KSendBeaconDefaultEndpoint = "https://3.109.143.177:8081/api/analysis" //"https://beacon.selfheal.com/api/analysis"--dev//https://beacon-qoe.selfheal.com/api/analysis
+const KSendBeaconDefaultEndpoint = "http://3.109.143.177:8081/api/analysis" //"https://beacon.selfheal.com/api/analysis"--dev//https://beacon-qoe.selfheal.com/api/analysis
 const KGetIPEndpoint = `https://api.ipify.org/?format=json`
 const devToken = "MS7AGKysN9luNSvbIE8mUHqEVYUmJDnJFakro5ZYwUvoqXiczR53AaL5CeRZ44UJ"
 const prodToken = "kySOCvPaMhp8v136bkqVHkLIBxl5OOsmw3HuhzXH4gsdhxW5cFeM6FjoDq1W1nYb"
