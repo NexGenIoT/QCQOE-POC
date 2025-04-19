@@ -10,21 +10,18 @@ const BitmovinPlayer = () => {
   const playerRef = useRef(null);
   const analyticsSDK = new TSAnalyticsMitigtionSDK();
   console.log('analyticsSDK', analyticsSDK);
+  const playerConfig = {
+    key: 'A7ACFA3C-C4C0-4847-A593-792CA02D24A7',
+    playback: {
+      muted: true,
+      autoplay: true,
+    },
+  };
 
   const setupPlayer = () => {
-    const player = new Player(playerContainerRef.current, {
-      key: "18ca6ad5-9768-4129-bdf6-17685e0d14d2",
-      playback: {
-        autoplay: true,
-        muted: true,
-      },
-      analytics: {
-        key: "2d7bf7f2-7d45-41e9-8ddb-4c0785bb644e",
-        videoId: "Bitmovin Learning Lab",
-        title: "Lets Play Video"
-      },
-      ui: true,
-    });
+    const playerConfigFromSDK = analyticsSDK.getMitigationConfiguration(playerConfig);
+    console.log('playerConfigFromSDK', playerConfigFromSDK);
+    const player = new Player(playerContainerRef.current, playerConfig);
     playerRef.current = player;
 
     const uiManager = UIFactory?.buildDefaultUI(player);

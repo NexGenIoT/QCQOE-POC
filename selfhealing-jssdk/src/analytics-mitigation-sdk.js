@@ -84,11 +84,11 @@ var stopPingEventkc = 0
 //Endpoint Details
 const KDoRegistrationEndpoint = "https://register-qoe.selfheal.com/register-session"//"https://register-qoe.selfheal.com/register-session"//"https://register.selfheal.com/register-session"
 const KGETMitigationEndpoint = "https://register-qoe.selfheal.com/get-mitigation-config"//"https://register-qoe.selfheal.com/get-mitigation-config"//"https://register.selfheal.com/get-mitigation-config"
-const KSendBeaconDefaultEndpoint = "https://beacon-qoe.selfheal.com/api/analysis"//"https://beacon.selfheal.com/api/analysis"--dev//https://beacon-qoe.selfheal.com/api/analysis
+const KSendBeaconDefaultEndpoint = "https://3.109.143.177:8081/api/analysis" //"https://beacon.selfheal.com/api/analysis"--dev//https://beacon-qoe.selfheal.com/api/analysis
 const KGetIPEndpoint = `https://api.ipify.org/?format=json`
-//dev--MS7AGKysN9luNSvbIE8mUHqEVYUmJDnJFakro5ZYwUvoqXiczR53AaL5CeRZ44UJ
-// prod--kySOCvPaMhp8v136bkqVHkLIBxl5OOsmw3HuhzXH4gsdhxW5cFeM6FjoDq1W1nYb
-const authToken = "kySOCvPaMhp8v136bkqVHkLIBxl5OOsmw3HuhzXH4gsdhxW5cFeM6FjoDq1W1nYb"
+const devToken = "MS7AGKysN9luNSvbIE8mUHqEVYUmJDnJFakro5ZYwUvoqXiczR53AaL5CeRZ44UJ"
+const prodToken = "kySOCvPaMhp8v136bkqVHkLIBxl5OOsmw3HuhzXH4gsdhxW5cFeM6FjoDq1W1nYb"
+const authToken = devToken;
 
 const KDefaultPeriodicBeaconFrequencySec = 20 * 1000
 const KSendBeaconDefaultEndpointNew = "http://3.108.121.176:8000/api/analysis"//--dev
@@ -262,7 +262,7 @@ class TSAnalyticsMitigtionSDKImpl {
     }
 
     _persistKIntVP(key, val) {
-        console.log("_persistKIntVP",val);
+        console.log("_persistKIntVP", val);
         if (val >= 0) {
             this._persistKStrVP(key, val.toString())
         }
@@ -1082,10 +1082,10 @@ class TSAnalyticsMitigtionSDKImpl {
                         //overide the rbl and sbl on mitigation from _processMitigationConfig
                         // _player.buffer.setTargetLevel('forwardduration', _startupBufferThreshold, 'video')
                         // _player.buffer.setTargetLevel('backwardduration', _reBufferThreshold, 'video')
-                        this._persistKIntVP(KLocalStorageKeyStartupThreshold,_startupBufferThreshold)
-                        this._persistKIntVP(KLocalStorageKeyRebufferThreshold,_reBufferThreshold)
+                        this._persistKIntVP(KLocalStorageKeyStartupThreshold, _startupBufferThreshold)
+                        this._persistKIntVP(KLocalStorageKeyRebufferThreshold, _reBufferThreshold)
                         this.getMitigationConfiguration(_player.getConfig())
-                       
+
                     }
 
                     // else{
@@ -1890,7 +1890,7 @@ class TSAnalyticsMitigtionSDKImpl {
                     forwardDuration: _startupBufferThreshold,
                     // preferredForwardBufferDuration: 30,
                     // threshold: 2
-                  }
+                }
                 var bitratekbps = _initialDownloadRate / 1024
                 playerConfig.adaptation = {}
                 playerConfig.adaptation.desktop = buffer
@@ -1900,11 +1900,11 @@ class TSAnalyticsMitigtionSDKImpl {
                 playerConfig.adaptation = {
                     desktop: {
                         startupBitrate: bitratekbps.toString() + "kbps",
-                        buffer:buffer
+                        buffer: buffer
                     },
                     mobile: {
                         startupBitrate: bitratekbps.toString() + "kbps",
-                         buffer:buffer
+                        buffer: buffer
                     },
 
                 }
@@ -1920,7 +1920,7 @@ class TSAnalyticsMitigtionSDKImpl {
                 playerConfig.setConfig(currentConfig);
 
                 // Reload the player to apply the changes
-                 playerConfig.load(currentConfig.source);
+                playerConfig.load(currentConfig.source);
 
                 //   playerConfig.buffer = {
                 // 	video: {
