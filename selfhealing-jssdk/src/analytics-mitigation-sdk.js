@@ -1082,10 +1082,9 @@ class TSAnalyticsMitigtionSDKImpl {
                         //overide the rbl and sbl on mitigation from _processMitigationConfig
                         // _player.buffer.setTargetLevel('forwardduration', _startupBufferThreshold, 'video')
                         // _player.buffer.setTargetLevel('backwardduration', _reBufferThreshold, 'video')
-                        this._persistKIntVP(KLocalStorageKeyStartupThreshold, _startupBufferThreshold)
-                        this._persistKIntVP(KLocalStorageKeyRebufferThreshold, _reBufferThreshold)
+                        // this._persistKIntVP(KLocalStorageKeyStartupThreshold, _startupBufferThreshold)
+                        // this._persistKIntVP(KLocalStorageKeyRebufferThreshold, _reBufferThreshold)
                         this.getMitigationConfiguration(_player.getConfig())
-
                     }
 
                     // else{
