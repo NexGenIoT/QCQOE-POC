@@ -1426,7 +1426,6 @@ class TSAnalyticsMitigtionSDKImpl {
 
 
         let _StopConfiginterval = setInterval(() => {
-            console.log('stopPingEventkc', stopPingEventkc, _impl._getTimeDifference(), _impl._getPrevEvent())
             if (stopPingEventkc <= _impl._getTimeDifference() && _impl._getPrevEvent() == "PAUSED") {
                 clearInterval(_configTimer)
                 clearInterval(_StopConfiginterval)
