@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useMemo, useRef} from 'react';
 import {Player, PlayerEvent} from 'bitmovin-player';
 import {UIFactory} from 'bitmovin-player-ui';
 import 'bitmovin-player-ui/dist/css/bitmovinplayer-ui.css';
@@ -18,36 +18,40 @@ const BitmovinPlayer = () => {
     },
   };
 
-  const setupPlayer = () => {
-    const playerConfigFromSDK = analyticsSDK.getMitigationConfiguration(playerConfig);
-    console.log('playerConfigFromSDK', playerConfigFromSDK);
-    const player = new Player(playerContainerRef.current, playerConfig);
-    playerRef.current = player;
+  const setupPlayer = useMemo(() => {
+    return () => {
+      const playerConfigFromSDK = analyticsSDK.getMitigationConfiguration(playerConfig);
+      console.log('playerConfigFromSDK', playerConfigFromSDK);
+      const player = new Player(playerContainerRef.current, playerConfig);
+      playerRef.current = player;
 
-    const uiManager = UIFactory?.buildDefaultUI(player);
-    player.on(PlayerEvent.Destroy, () => {
-      uiManager.release();
-    });
+      const uiManager = UIFactory?.buildDefaultUI(player);
+      player.on(PlayerEvent.Destroy, () => {
+        uiManager.release();
+      });
 
-    const source = {
-      dash: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd',
-      hls: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8',
-      poster: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/poster.jpg'
+      const source = {
+        dash: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd',
+        hls: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8',
+        poster: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/poster.jpg'
+      };
+
+      const assetInfo = {
+        AssetID: "1235",
+        Provider: "Hotstar",
+        CDN: "AKAMAI"
+      };
+
+      analyticsSDK.registerPlaybackSession(assetInfo, player);
+
+      player.load(source).then(() => {
+        console.log('Player loaded successfully');
+      }).catch((error) => {
+        console.error('Error loading player:', error);
+      });
     };
+  }, [playerContainerRef, playerRef, playerConfig]);
 
-    const assetInfo = {
-      AssetID: "1235",
-      Provider: "Hotstar",
-      CDN: "AKAMAI"
-    }
-    analyticsSDK.registerPlaybackSession(assetInfo, player);
-
-    player.load(source).then(() => {
-      console.log('Player loaded successfully');
-    }).catch((error) => {
-      console.error('Error loading player:', error);
-    });
-  }
 
   useEffect(() => {
     if (analyticsSDK && !playerRef.current) {
