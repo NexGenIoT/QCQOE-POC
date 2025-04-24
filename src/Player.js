@@ -67,7 +67,7 @@ const BitmovinPlayer = () => {
         analyticsSDK.unregisterApplication();
       };
     }
-  }, [analyticsSDK]);
+  }, [analyticsSDK, setupPlayer]);
 
   return <div ref={playerContainerRef} style={
     {
