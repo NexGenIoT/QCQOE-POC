@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
-import { Player, PlayerEvent } from 'bitmovin-player';
-import { UIFactory } from 'bitmovin-player-ui';
+import React, {useEffect, useRef} from 'react';
+import {Player, PlayerEvent} from 'bitmovin-player';
+import {UIFactory} from 'bitmovin-player-ui';
 import 'bitmovin-player-ui/dist/css/bitmovinplayer-ui.css';
-import { TSAnalyticsMitigtionSDK } from 'selfheal-analytics-mitigation';
+import {TSAnalyticsMitigtionSDK} from 'selfheal-analytics-mitigation';
 
 
 const BitmovinPlayer = () => {
@@ -67,7 +67,7 @@ const BitmovinPlayer = () => {
         analyticsSDK.unregisterApplication();
       };
     }
-  }, []);
+  }, [analyticsSDK]);
 
   return <div ref={playerContainerRef} style={
     {
