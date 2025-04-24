@@ -10,15 +10,15 @@ const BitmovinPlayer = () => {
   const playerRef = useRef(null);
   const analyticsSDK = useMemo(() => new TSAnalyticsMitigtionSDK(), []);
   console.log('analyticsSDK', analyticsSDK);
-  const playerConfig = {
-    key: 'A7ACFA3C-C4C0-4847-A593-792CA02D24A7',
-    playback: {
-      muted: true,
-      autoplay: true,
-    },
-  };
 
   const setupPlayer = useMemo(() => {
+    const playerConfig = {
+      key: 'A7ACFA3C-C4C0-4847-A593-792CA02D24A7',
+      playback: {
+        muted: true,
+        autoplay: true,
+      },
+    };
     return () => {
       const playerConfigFromSDK = analyticsSDK.getMitigationConfiguration(playerConfig);
       console.log('playerConfigFromSDK', playerConfigFromSDK);
@@ -50,7 +50,7 @@ const BitmovinPlayer = () => {
         console.error('Error loading player:', error);
       });
     };
-  }, [playerContainerRef, playerRef, playerConfig, analyticsSDK]);
+  }, [playerContainerRef, playerRef, analyticsSDK]);
 
 
   useEffect(() => {
