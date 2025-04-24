@@ -50,7 +50,7 @@ const BitmovinPlayer = () => {
         console.error('Error loading player:', error);
       });
     };
-  }, [playerContainerRef, playerRef, playerConfig]);
+  }, [playerContainerRef, playerRef, playerConfig, analyticsSDK]);
 
 
   useEffect(() => {
