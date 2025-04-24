@@ -8,7 +8,7 @@ import {TSAnalyticsMitigtionSDK} from 'selfheal-analytics-mitigation';
 const BitmovinPlayer = () => {
   const playerContainerRef = useRef(null);
   const playerRef = useRef(null);
-  const analyticsSDK = new TSAnalyticsMitigtionSDK();
+  const analyticsSDK = useMemo(() => new TSAnalyticsMitigtionSDK(), []);
   console.log('analyticsSDK', analyticsSDK);
   const playerConfig = {
     key: 'A7ACFA3C-C4C0-4847-A593-792CA02D24A7',
