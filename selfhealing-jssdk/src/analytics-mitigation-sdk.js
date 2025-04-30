@@ -1,6 +1,6 @@
-import { PlayerEvent } from 'bitmovin-player';
+import {PlayerEvent} from 'bitmovin-player';
 import md5 from 'md5';
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 // ========================================================================= //
 //Flag to enable/disable logging
@@ -87,13 +87,12 @@ const KGETMitigationEndpoint = "http://3.109.143.177:8091/get-mitigation-config"
 const KSendBeaconDefaultEndpoint = "http://3.109.143.177:8081/api/analysis" //"https://beacon.selfheal.com/api/analysis"--dev//https://beacon-qoe.selfheal.com/api/analysis
 const KGetIPEndpoint = `https://api.ipify.org/?format=json`
 const devToken = "MS7AGKysN9luNSvbIE8mUHqEVYUmJDnJFakro5ZYwUvoqXiczR53AaL5CeRZ44UJ"
-const prodToken = "kySOCvPaMhp8v136bkqVHkLIBxl5OOsmw3HuhzXH4gsdhxW5cFeM6FjoDq1W1nYb"
+// const prodToken = "kySOCvPaMhp8v136bkqVHkLIBxl5OOsmw3HuhzXH4gsdhxW5cFeM6FjoDq1W1nYb"
 const authToken = devToken;
 
 const KDefaultPeriodicBeaconFrequencySec = 20 * 1000
-const KSendBeaconDefaultEndpointNew = "http://3.108.121.176:8000/api/analysis"//--dev
 
-var _beaconUrl = KSendBeaconDefaultEndpoint// KSendBeaconDefaultEndpointNew// KSendBeaconDefaultEndpoint
+var _beaconUrl = KSendBeaconDefaultEndpoint;
 var _beaconFrequency = KDefaultPeriodicBeaconFrequencySec
 var _mitigationFrequency = KDefaultPeriodicBeaconFrequencySec
 var ondestroyFrequency = 0;
@@ -1158,7 +1157,7 @@ class TSAnalyticsMitigtionSDKImpl {
             ondestroyFrequency = 20000000000
         }
         if (evt) {
-            var payload = JSON.stringify({ event: evt }, function (key, value) {
+            var payload = JSON.stringify({event: evt}, function (key, value) {
                 // limit precision of floats
                 if (typeof value === 'number') {
                     return parseFloat(value.toFixed(2));
@@ -1306,10 +1305,6 @@ class TSAnalyticsMitigtionSDKImpl {
             evt.eventData.latency = latency
             return evt
         }
-
-
-
-
     }
 
     _getSeekedEvent(seek_duration) {
@@ -1755,11 +1750,11 @@ class TSAnalyticsMitigtionSDKImpl {
             if (response.registration_response.bu != null) {
                 console.log('_beaconUrl_.bu', response.registration_response.bu)
                 // _beaconUrl = `${response.registration_response.bu}/api/analysis` // TODO: should be dynamic 
-                _beaconUrl = KSendBeaconDefaultEndpoint// KSendBeaconDefaultEndpointNew
+                _beaconUrl = KSendBeaconDefaultEndpoint
             } else {
-                _beaconUrl = KSendBeaconDefaultEndpoint// KSendBeaconDefaultEndpointNew  
+                _beaconUrl = KSendBeaconDefaultEndpoint
             }
-            KDefaultPrevEventCount === 1//set to default
+            KDefaultPrevEventCount = 1//set to default
 
             if (response.registration_response.kaInterval != null) {
                 _beaconFrequency = parseInt(response.registration_response.kaInterval) * 1000
@@ -1838,7 +1833,7 @@ class TSAnalyticsMitigtionSDKImpl {
                 }
             }))
 
-            .catch(function () { console.log("Registration with platform failed") })
+            .catch(function () {console.log("Registration with platform failed")})
     };
 
     async _getIP() {
