@@ -1166,7 +1166,7 @@ class TSAnalyticsMitigtionSDKImpl {
             })
             if (_enableLogging) {
             }
-            console.log('log---1', payload)
+
             await fetch(_beaconUrl, {
                 method: "POST",
                 body: payload,
