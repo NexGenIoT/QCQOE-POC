@@ -31,9 +31,11 @@ const BitmovinPlayer = () => {
       });
 
       const source = {
-        dash: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd',
-        hls: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8',
-        poster: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/poster.jpg'
+        // dash: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd',
+        // hls: 'http://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8',
+        hls: 'http://content.jwplatform.com/manifests/vM7nH0Kl.m3u8',
+        // hls: 'http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8',
+        poster: ''
       };
 
       const assetInfo = {

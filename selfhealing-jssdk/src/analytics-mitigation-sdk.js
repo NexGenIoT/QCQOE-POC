@@ -690,7 +690,7 @@ class TSAnalyticsMitigtionSDKImpl {
     }
 
     _createCommonEventPayload() {
-        if (stopEvent == "STOPPED" || stopEvent == "ERROR") {
+        if (stopEvent === "STOPPED" || stopEvent === "ERROR") {
             return {
                 version: KSchemaVersion,
                 sdkVersion: KSDKVersion,
@@ -1166,7 +1166,7 @@ class TSAnalyticsMitigtionSDKImpl {
             })
             if (_enableLogging) {
             }
-
+            console.log('log---1', payload)
             await fetch(_beaconUrl, {
                 method: "POST",
                 body: payload,
@@ -1192,6 +1192,7 @@ class TSAnalyticsMitigtionSDKImpl {
         var evt = _impl._createCommonEventPayload()
         evt.eventPrev = _impl._getPrevEvent()
         evt.event = "PLAYCLICKED"
+        evt.eventData = {}
         _impl._startPeriodicEvents()
         _impl._startStartMitigationEvents()
         return evt
@@ -1355,7 +1356,7 @@ class TSAnalyticsMitigtionSDKImpl {
             _impl._cancelStallTrackingTimer()
             var playingTime = _impl._getCurrentTimeInSec()
 
-            if (_impl._getPrevEvent() == "PLAYCLICKED") {
+            if (_impl._getPrevEvent() === "PLAYCLICKED") {
                 _sessionState.playClickedIntentExplicitExpected = false
                 if (_sessionState.playIntentTime > playingTime) {
                 }
@@ -2012,7 +2013,7 @@ class TSAnalyticsMitigtionSDKImpl {
             stopEvent = "ERROR"
             var evt = _impl._createCommonEventPayload()
             console.log("event--", _impl._getPrevEvent());
-            if (type == "ERROR" && _impl._getPrevEvent() !== "ERROR") {
+            if (type === "ERROR" && _impl._getPrevEvent() !== "ERROR") {
                 setTimeout(() => {
 
                     evt.eventPrev = "PLAYCLICKED"
