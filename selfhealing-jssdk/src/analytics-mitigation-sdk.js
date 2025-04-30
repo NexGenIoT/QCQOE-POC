@@ -82,8 +82,8 @@ var stopPingEventkc = 0
 
 // ========================================================================= //
 //Endpoint Details
-const KDoRegistrationEndpoint = "http://3.109.143.177:8091/register-session"
-const KGETMitigationEndpoint = "http://3.109.143.177:8091/get-mitigation-config"
+const KDoRegistrationEndpoint = "http://3.6.164.157:8091/register-session"
+const KGETMitigationEndpoint = "http://3.6.164.157:8091/get-mitigation-config"
 const KSendBeaconDefaultEndpoint = "http://3.6.164.157:8081/api/analysis"
 const KGetIPEndpoint = `https://api.ipify.org/?format=json`
 const devToken = "MS7AGKysN9luNSvbIE8mUHqEVYUmJDnJFakro5ZYwUvoqXiczR53AaL5CeRZ44UJ"
