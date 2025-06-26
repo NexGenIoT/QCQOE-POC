@@ -1,0 +1,255 @@
+
+.delete-dot{
+    padding: 5px;
+    background-color:#dac5f2;
+    color: #7121ce !important;
+    border-radius: 50%;
+    display:inline;
+    font-size: 35px !important;
+  }
+.useractive{
+    // padding: 5px 10px;
+    border-radius: 4px;
+    background: #3CB574;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .userdeactiverole {
+    // padding: 5px 10px;
+    border-radius: 4PX;
+    background: #9D9D9D !important;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .record_permission {
+    border: 1px solid #5E03C7;
+    padding: 5px 10px;
+    color: #5E03C7;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.metadataevent {
+    opacity: 0.5;
+    cursor: default !important;
+}
+// .record_permission {
+//     border: 1px solid #5E03C7;
+//     padding: 5px 10px;
+//     color: #5E03C7;
+//     border-radius: 4px;
+//     font-size: 12px;
+//     cursor: pointer;
+// }
+.reset-btn{
+  background: #fff;
+  border: 1px solid #907fa2;
+  border-radius: 4px !important;
+  transition: none;
+  padding: 6px 24px !important;
+  font-size: 12px;
+  font-weight: 400;
+  color: #907fa2;
+}
+
+.reset-btn:hover,.reset-btn:active {
+  border: 1px solid #907fa2;
+  background: #907fa2 !important;
+  color: #fff !important;
+  border-radius: 4px;
+  font-weight: 400;
+}
+.create-btn {
+  // border: 1px solid #6b00dd;
+  padding: 6px 24px !important;
+  background: #6b00dd !important;
+  color: #fff !important;
+  border-radius: 4px;
+  font-weight: 400;
+  border: none;
+}
+.back-btn{
+  border: 1px solid #e73baa !important;
+  padding: 4px 38px !important;
+  color: #e73baa !important;
+}
+.back-btn:hover{
+  background-color: #e73baa !important; 
+  color: #fff !important;
+}
+@media screen and (max-width: 760px) {
+  .search-responsive{
+margin-top: 7px;
+  }
+  .add-role-button{
+    padding: 5px 0px 5px 0px;
+  }
+}
+.bottom-style{
+  margin-bottom: -30px !important;
+}
+
+.createuser{
+  font-size: 13px;
+  padding: 5px 16px;
+}
+
+.roles-and-permission{
+  background: #fff;
+  border-radius: 4px;
+  margin: 16px 0 0 0;
+  padding: 16px 16px;
+      label{
+          font-size: 14px;
+          margin:0;
+          font-weight: 500;
+          color: #070707;
+      }
+      .add-permission{
+          color: #5e03c7;
+          text-transform: uppercase;
+          // cursor: pointer;
+          text-align: right;
+          margin-top:29px;
+      }
+ .roles-permission-bg{
+      border-radius:7px;
+      margin-top: 16px;
+      background:#f7f2fc;
+      position: relative;
+      min-height:110px;
+          h4{
+              float: left;
+              width: 100%;
+              font-size: 16px;
+              margin: 17px 0 5px 20px;
+              color: #000;
+          }
+    .cta{
+      background: #5e03c7;
+      text-align: center;
+      border-radius: 49px;
+      float: left;
+      margin-bottom: 29px;
+      min-width: 121px;
+      margin-left: 1.6%;
+      color: #ffffff;
+      padding: 0.4rem 1rem;
+    }   
+   .permission-btn{
+      width: 88%;
+      float: left;
+   }  
+ }     
+}
+.controls-roles{
+  margin: 23px 0 0 0;
+  width: 100%;
+}
+.control-select{
+  width: 300px;
+  input{
+      padding: 4px 4px 7.5px 6px !important;
+  }
+  div{
+      height: 40px;
+      padding: 3px 0px !important;
+  }
+  p{
+      margin: 0px;
+      font-size: 14px;
+      color: 	#ff0000 !important;
+  }
+  
+}
+
+.drop-padding {
+  .MuiIconButton-root {
+     padding: 0px;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+//-------------------------
+.createuser {
+  background: #fff;
+  // color: #e71f9d;
+  padding: 6px 24px;
+  text-align: center;
+  border: 1px solid #e10592;
+  border-radius: 4px !important;
+  color: #e10592;
+  // font-weight: 600;
+  &:hover{
+      border: 1px solid #e10592;
+      background-color: #e10592;
+      color: #fff;
+      font-weight: bold;
+  }
+}
+.Status-btn-user{
+  background: #fff;
+  border: 1px solid #e4149a;
+  border-radius: 4px !important;
+  transition: none;
+  padding: 6px 24px !important;
+  font-size: 12px;
+  font-weight: 400;
+  color: #e4149a;
+}
+
+.Status-btn-user:hover,.Status-btn-user:active {
+  border: 1px solid #e4149a;
+  background: #e4149a ;
+  color: #fff !important;
+  border-radius: 4px;
+  // font-weight: 400;
+}
+.reset-btn{
+  background: #fff;
+  border: 1px solid #907fa2;
+  border-radius: 4px !important;
+  transition: none;
+  padding: 6px 24px !important;
+  font-size: 12px;
+  font-weight: 400;
+  color: #907fa2;
+}
+
+.reset-btn:hover,.reset-btn:active {
+  border: 1px solid #907fa2;
+  background: #907fa2 !important;
+  color: #fff !important;
+  border-radius: 4px;
+  font-weight: 400;
+}
+.create-btn {
+  // border: 1px solid #6b00dd;
+  padding: 6px 24px !important;
+  background: #6b00dd !important;
+  color: #fff !important;
+  border-radius: 4px;
+  font-weight: 400;
+  border: none;
+}
+.back-btn{
+  border: 1px solid #e73baa !important;
+  padding: 4px 38px !important;
+  color: #e73baa !important;
+}
+.back-btn:hover{
+  background-color: #e73baa !important; 
+  color: #fff !important;
+}
+.form-control {
+  height: 40px;
+}
+.required {
+  color: red !important;
+}
+
+//--------------------
+

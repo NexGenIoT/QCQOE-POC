@@ -1,0 +1,18 @@
+version: "3.4"
+services:
+  analytics_api:
+    image: qoe_analytics
+    build:
+      context: analytics_api
+    ports:
+      - "8000:80"
+    env_file:
+      - local.env
+    restart: unless-stopped
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: "ap-south-1"
+        awslogs-group: "qoe_analytics_api"
+        awslogs-create-group: "true"
+        tag: "{{.ImageName}}"

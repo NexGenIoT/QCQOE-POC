@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn instance to serve mitigration_service
+After=network.target
+
+[Service]
+User=ubuntu
+EnvironmentFile=/home/ubuntu/deployment/backend-poc/backend-poc/microservices/local1.env
+ENV GEOIP_DB_PATH=/home/ubuntu/deployment/backend-poc/backend-poc/microservices/analytics_api/GeoIP2-City-Asia-Pacific.mmdb
+WorkingDirectory=/home/ubuntu/deployment/backend-poc/backend-poc/microservices/analytics_api/app
+ExecStart=gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+# ExecStart=python3 main.py
+
+[Install]
+WantedBy=multi-user.target

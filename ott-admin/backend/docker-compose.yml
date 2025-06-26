@@ -1,0 +1,175 @@
+version: '3'
+services:
+  api_server:
+    build:
+      context: ./api_server
+      dockerfile: Dockerfile
+    container_name: api_server_v1
+    ports:
+      - "8080:80"
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: no
+    networks:
+      - app-network
+
+  analytics_api:
+    build:
+      context: ./analytics_api
+      dockerfile: Dockerfile
+    container_name: analytics_api_v1
+    ports:
+      - "8081:80"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api_server
+    restart: no
+    networks:
+      - app-network
+
+  kinesis_producer:
+    build:
+      context: ./kinesis_producer
+      dockerfile: Dockerfile
+    container_name: kinesis_producer_v1
+    ports:
+      - "8082:80"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api_server
+    restart: no
+    networks:
+      - app-network
+  ai_mitigation:
+    build:
+      context: ./ai_mitigation
+      dockerfile: Dockerfile
+    container_name: ai_mitigation_v1
+    ports:
+      - "8083:80"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api_server
+    restart: no
+    networks:
+      - app-network
+  anomaly-rca-api:
+    build:
+      context: ./anomaly-rca-api
+      dockerfile: Dockerfile
+    container_name: anomaly-rca-api_v1
+    ports:
+      - "8084:80"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api_server
+    restart: no
+    networks:
+      - app-network
+  
+  config_manager:
+    build:
+      context: ./config_manager
+      dockerfile: Dockerfile
+    container_name: config_manager_v1
+    ports:
+      - "8085:80"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api_server
+    restart: no
+    networks:
+      - app-network
+  dsm_store:
+    build:
+      context: ./dsm_store
+      dockerfile: Dockerfile
+    container_name: dsm_store_v1
+    ports:
+      - "8086:80"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api_server
+    restart: no
+    networks:
+      - app-network
+  location_metrics:
+    build:
+      context: ./location_metrics
+      dockerfile: Dockerfile
+    container_name: location_metrics_v1
+    ports:
+      - "8087:80"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api_server
+    restart: no
+    networks:
+      - app-network
+  location_service:
+    build:
+      context: ./location_service
+      dockerfile: Dockerfile
+    container_name: location_service_v1
+    ports:
+      - "8088:80"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api_server
+    restart: no
+    networks:
+      - app-network
+  open_search_producer:
+    build:
+      context: ./open_search_producer
+      dockerfile: Dockerfile
+    container_name: open_search_producer_v1
+    ports:
+      - "8089:80"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api_server
+    restart: no
+    networks:
+      - app-network
+  outage_banner:
+    build:
+      context: ./outage_banner
+      dockerfile: Dockerfile
+    container_name: outage_banner_v1
+    ports:
+      - "8090:80"
+    restart: no
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api_server
+    networks:
+      - app-network
+  player_registration:
+    build:
+      context: ./player_registration
+      dockerfile: Dockerfile
+    container_name: player_registration_v1
+    ports:
+      - "8091:80"
+    restart: no
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api_server
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

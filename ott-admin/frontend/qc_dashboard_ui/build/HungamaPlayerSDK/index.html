@@ -1,0 +1,161 @@
+ <!DOCTYPE html>
+ <html>
+
+ <head>
+   <title>HUNGAMA</title>
+   <meta charset="utf-8" />
+   <script src="./libs/moment.min.js"></script>
+   <script src="./libs/client.min.js"></script>
+   <script src="./libs/hls.min.js"></script>
+   <script src="./libs/crypto-js.min.js"></script>
+   <script src="./libs/native-shim.js"></script>
+   <script src="./libs/ha.min.js"></script>
+   <script src="./hungamaplayer.min.js"></script>
+ </head>
+
+ <body >
+   <div id='player-container' style="width: 100%; height: 100vw * 9/16;background-color: black; visibility: visible;">
+   </div>
+
+   <script type="text/javascript">
+      // localStorage.getItem("partneruniqueid")//"9000683356-3000686452"
+      console.log("hungama",localStorage.getItem("partneruniqueid").split("-")[1]);
+    HungamaPlayer.HungamaPlayerManager.initialize();
+    HungamaPlayer.HungamaPlayerManager.getInstance().setPartnerUniqueId(localStorage.getItem("partneruniqueid").split("-")[1]);
+    const queryString = window.location.search;
+    const parameters = new URLSearchParams(queryString);
+    const assetId = parameters.get('assetId');
+    const assetTitle = parameters.get('assetTitle')
+
+    console.log('assetId ' + assetId)
+    console.log('assetTitle '+ assetTitle)
+
+     var customElementDefinedCallback = () => {
+       const playerView = document.createElement('hungama-player-view');
+       playerView.id = 'player-view';
+       const playerContainer = document.getElementById('player-container');
+       playerContainer.appendChild(playerView);
+       console.log('hungama player ready!');
+       console.log('Loading Video')
+       setTimeout(() =>{
+        load()
+       }, 3000)
+     };
+
+     customElements.whenDefined('hungama-player-view').then(customElementDefinedCallback);
+
+     var handleError = (error) => {
+       console.log("ErrorCode:" + error.code);
+       switch (error.code) {
+         case 1020:
+           console.log("PartnerId/HungamaIdNotAvailable");
+           break;
+       }
+     };
+
+     var playerStateChangeListener = {
+       onPlayerStateChanged: (state) => {
+         console.log("Player State:" + state);
+         switch (state) {
+           case HungamaPlayer.PlayerState.READY:
+             console.log("Playing");
+             break;
+           case HungamaPlayer.PlayerState.ENDED:
+             console.log("Ended");
+             unload();
+             break;
+         }
+       },
+       onPlayerTimeUpdate: (time) => {
+         console.log("time update: " + time);
+       },
+       onPlayerError: (error) => {
+         handleError(error);
+       }
+     };
+
+     var startPlayback = () => {
+       try {
+         console.log('starting playback')
+         var playerView = document.getElementById("player-view");
+         HungamaPlayer.HungamaPlayerManager.getInstance().initializePlayer();
+         HungamaPlayer.HungamaPlayerManager.getInstance().preparePlayer(playerView, playerStateChangeListener);
+         HungamaPlayer.HungamaPlayerManager.getInstance().start();
+       } catch (err) {
+         handleError(err);
+       }
+     };
+
+     var contentLoadListener = {
+       onContentLoadSuccess: () => {
+        //  var loadBtn = document.getElementById('load-button');
+        //  var playPauseBtn = document.getElementById('play-pause-button');
+        //  loadBtn.style.visibility = 'hidden';
+        //  loadBtn.style.display = 'none';
+        // playPauseBtn.style.visibility = 'visible';
+        // console.log('Inside Content Load Listener')
+         startPlayback();
+       },
+       onContentLoadFailed: (error) => {
+         handleError(error);
+       }
+     };
+
+     var load = () => {
+       console.log('Load Function Started')
+       var content = {
+         title: assetTitle, //"Bar Code - EP 01 The VIP Room";
+         id: assetId, //"40711098";50844790
+         type: HungamaPlayer.ContentType.TVShowEpisode, //HungamaPlayer.ContentType.MusicVideo;
+       };
+       console.log('Loading '+ content.title, content.id)
+       try {
+         HungamaPlayer.HungamaPlayerManager.getInstance().load(content, contentLoadListener);
+       } catch (err) {
+         console.log(err)
+         handleError(err);
+       }
+     };
+
+     var playPause = () => {
+       HungamaPlayer.HungamaPlayerManager.getInstance().togglePlayPause();
+       var playPauseBtn = document.getElementById('play-pause-button');
+       if (HungamaPlayer.HungamaPlayerManager.getInstance().isPlaying()) {
+         playPauseBtn.innerHTML = "PAUSE";
+       } else {
+         playPauseBtn.innerHTML = "PLAY";
+       }
+     };
+
+     var unload = () => {
+       HungamaPlayer.HungamaPlayerManager.getInstance().stop();
+       HungamaPlayer.HungamaPlayerManager.getInstance().releasePlayer();
+       var loadBtn = document.getElementById('load-button');
+       var playPauseBtn = document.getElementById('play-pause-button');
+       var stopBtn = document.getElementById('stop-button');
+       loadBtn.style.visibility = 'visible';
+       loadBtn.style.display = 'inline-block';
+       playPauseBtn.style.visibility = 'hidden';
+       stopBtn.style.visibility = 'hidden';
+     }
+
+     var onClosedCaptionsClicked = () => {
+       if (!HungamaPlayer.HungamaPlayerManager.getInstance().isSubtitleAvailable()) {
+         return;
+       }
+       HungamaPlayer.HungamaPlayerManager.getInstance().setSubtitleEnabled(!HungamaPlayer.HungamaPlayerManager
+         .getInstance().isSubtitleEnabled());
+     };
+
+     var onVideoQualityClicked = () => {
+       var variants = HungamaPlayer.HungamaPlayerManager.getInstance().getPlaybackVariants();
+       if (variants != null && variants.length > 0) {
+         //Show variants.
+         //on click
+         HungamaPlayer.HungamaPlayerManager.getInstance().setPlaybackVariant(variants[0]);
+       }
+     };
+   </script>
+ </body>
+
+ </html>

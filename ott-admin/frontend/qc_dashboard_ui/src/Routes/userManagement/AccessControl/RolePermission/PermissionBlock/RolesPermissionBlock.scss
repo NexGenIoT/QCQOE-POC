@@ -1,0 +1,87 @@
+.permission-action{
+    width: auto;
+    text-align: right;
+    display: inline-flex;
+    position: absolute;
+    right: 20px;
+    top: 17px;
+    .edit-icon {
+        background: #D3B9EF;
+        padding: 10px;
+        text-align: center;
+        color: #5e03c7;
+        width: 40px;
+        height: 40px;
+        border-radius: 90px;
+        font-size: 18px;
+        line-height: 41px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+ 
+ }
+@media screen and (max-width: 670px) {
+    .icon-action{
+        margin-right: -17px;
+    }
+    .permission-action{
+        width: auto;
+        display:block;
+        top: -15px;
+        // margin-right: -5px;
+    }
+    .edit-icon {
+        margin-top: 10px;
+        display: block !important;
+    }
+ }
+
+ .breadcrumb{
+    width: 100%;
+    background: none;
+    // background-color: #f1f4f6;
+    padding-left: 0% !important;
+    ul{
+        padding-left: 0% !important;
+        list-style: none;
+        margin:0;
+        li{
+            width: auto;
+            color: #889197;
+            float: left;
+            cursor: pointer;
+            font-size: 0.9rem;
+            span{
+                margin: 0 0.3rem 0 0.1rem;
+           }
+           a{
+            color: black;
+           }
+       }
+        li:nth-last-child(1) {
+            color: #5e03c7;
+            cursor:inherit;
+       }
+   }
+}
+
+.position-relative {
+    position: relative !important;
+}
+
+.control-select{
+    width: 300px;
+    input{
+        padding: 4px 4px 7.5px 6px !important;
+    }
+    div{
+        height: 40px;
+        padding: 3px 0px !important;
+    }
+    p{
+        margin: 0px;
+        font-size: 14px;
+        color: 	#ff0000 !important;
+    }
+    
+}

@@ -1,0 +1,15 @@
+[Unit]
+Description=Gunicorn instance to serve mitigration_service
+After=network.target
+
+[Service]
+User=ubuntu
+EnvironmentFile=/home/ubuntu/app/microservices/api_server/local.env
+
+WorkingDirectory=/home/ubuntu/app/microservices/api_server/app
+ExecStart=python3 dashboard_microservice.py
+[Install]
+WantedBy=multi-user.target
+
+
+

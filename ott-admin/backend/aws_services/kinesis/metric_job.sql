@@ -1,0 +1,43 @@
+%flink.ssql(type=update)
+-- Aggregation
+INSERT INTO table_2
+SELECT
+--UNIX_TIMESTAMP() as batch_ts,
+-- platform as device_platform,
+case when (platform='Android' and deviceType='Mobile') then 'Android' else (CASE WHEN (platform='Android' and deviceType='Firestick') then 'Firestick' else platform end) end as  device_platform,provider as content_partner, cdn,
+AVG(bitrate_bits_per_second)/8000 as m_average_bitrate,-- sessionid as sessionid,
+count(case when event='PLAYCLICKED' then 1 else null end) as m_play_attempts,
+count(case when event='STARTED' then 1 else null end) as m_succesful_plays,
+-- (count(case when event='STARTED' then 1 else null end)- count(case when event='ERROR' then 1 else null end)) as m_succesful_plays,
+count(case when event='STOPPED' and event_prev='PLAYCLICKED' then 1 else null end) as m_exit_before_video_starts,
+count(case when event='ERROR' and event_prev='PLAYCLICKED' then 1 else null end) as m_video_start_failures,
+count(case when event='ERROR' then 1 else null end) as m_video_playback_failures,
+count(DISTINCT sessionid) as m_concurrent_plays,
+COALESCE(SUM(stall_duration_milliseconds)* 1.0/NULLIF((SUM(stall_duration_milliseconds) + SUM(duration_of_playback_seconds)),0), 0.0 ) as m_rebuffering_ratio,
+-- SUM(case when event_prev ='SEEK' and event='REBUFFERING' then (COALESCE(SUM(stall_duration_milliseconds)* 100.0/NULLIF((SUM(stall_duration_milliseconds) + SUM(duration_of_playback_seconds)),0), 0.0 )) else null end ) as m_connection_induced_rebuffering_ratio,
+
+CAST(SUM(duration_of_playback_seconds) as float) as m_total_minutes_watched,
+count(DISTINCT udid) as m_unique_devices,
+AVG(framerate) as m_average_framerate,
+AVG(throughput_bits_per_second)/1000000 as m_bandwidth,
+count(case when event='PLAYCLICKED' then 1 else null end) as m_attempts,
+count(case when event='STOPPED' then 1 else null end) as m_ended_plays,
+
+COALESCE(SUM(stall_duration_milliseconds)* 100.0/NULLIF((SUM(stall_duration_milliseconds) + SUM(duration_of_playback_seconds)),0), 0.0 ) as m_rebuffering_percentage,
+COALESCE(count(case when event='STARTED' then 1 else null end)/NULLIF(count(DISTINCT udid),0),0.0) as m_ended_plays_per_unique_device,
+COALESCE(CAST(SUM(duration_of_playback_seconds) as float)* 1.0/ NULLIF(count(DISTINCT sessionid),0), 0.0 ) as m_minutes_per_unique_devices,
+COALESCE(count(DISTINCT sessionid),0) as m_unique_viewers,
+COALESCE(SUM(duration_of_playback_seconds)* 100.0/ NULLIF(SUM(asset_duration_seconds),0), 0.0 ) as m_average_percentage_completion,
+count(case when event='STOPPED' and event_prev='BUFFERING' then 1 else null end) as m_user_attrition,
+COALESCE(AVG(vrt_milliseconds),0) as m_video_restart_time,
+COALESCE(AVG(latency_milliseconds),0) as m_video_start_time,
+COALESCE((SUM(duration_of_playback_seconds) * AVG(framerate) - AVG(frameloss))/ NULLIF((SUM(duration_of_playback_seconds) * AVG(framerate)),0),0) as m_rendering_quality,
+TUMBLE_ROWTIME(event_time, INTERVAL '10' second) as dts,
+REPLACE(SUBSTRING(CAST(from_unixtime(`timestamp`) as CHAR) FROM 1 FOR 18) || '0.000000+00:00',' ','T') as dts_es,
+COALESCE(avg(case when event='BUFFERING' and (event_prev='STARTED' or event_prev='STOPPED' or  event_prev='BUFFERING' or  event_prev='PAUSED' or  event_prev='RESUMED' or  event_prev='COMPLETED' or  event_prev='ERROR') then  stall_duration_milliseconds/NULLIF(CAST((duration_of_playback_seconds+stall_duration_milliseconds) as float), 0)  else 0 end), 0)  as m_connection_induced_rebuffering_ratio,
+location_city as location,
+LISTAGG(record_id) as batch_desc,
+count(record_id) as m_total_payload_count,
+content_type as content_type
+FROM data_input_stream_2
+GROUP BY TUMBLE(event_time, INTERVAL '10' second), platform, provider,cdn,deviceType,location_city,content_type,record_id, `timestamp` --,sessionid

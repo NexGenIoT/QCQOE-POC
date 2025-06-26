@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPN Demo Root</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background: #fafafa;
+      }
+      .card {
+        padding: 20px;
+        width: 500px;
+        max-width: 90vw;
+        background-color: white;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+          0 25px 50px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+      }
+
+      h1 {
+        margin-top: 0;
+      }
+
+      label {
+        cursor: pointer;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        var form = document.getElementById("demoOptions");
+        form.onsubmit = onSubmit;
+      };
+
+      function openUrlInNewTab(url) {
+        var win = window.open(url, "_blank");
+        win.focus();
+      }
+
+      function onSubmit(e) {
+        e.preventDefault();
+        var demoURL = window.location.pathname;
+        var enableDebug = document.getElementById("enabledebug").checked;
+        var enableUI = document.getElementById("enableui").checked;
+        var useIFrame = document.getElementById("useiframe").checked;
+        var enableAds = document.getElementById("enableads").checked;
+        var enableTestAd = document.getElementById("enabletestad").checked;
+        var createplayer = document.getElementById("createplayer").checked;
+        var prefetchplayer = document.getElementById("prefetchplayer").checked;
+        if (enableDebug) {
+          demoURL = demoURL.replace("/index.html", "/demo.debug.html");
+        } else {
+          demoURL = demoURL.replace("/index.html", "/demo.html");
+        }
+        var url =
+          demoURL +
+          "#enableui=" +
+          enableUI +
+          "&useiframe=" +
+          useIFrame +
+          "&enableads=" +
+          enableAds +
+          "&enabletestad=" +
+          enableTestAd +
+          "&createplayer=" +
+          createplayer +
+          "&prefetchplayer=" +
+          prefetchplayer;
+
+        openUrlInNewTab(url);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="card">
+      <h1>qoe SDK Demo</h1>
+      <h5>Select Options</h5>
+      <form id="demoOptions">
+        <div style="display: none">
+          <div>
+            <input type="checkbox" name="" id="useiframe" checked />
+            <label for="useiframe">Load Player in Iframe</label>
+          </div>
+          <div>
+            <input type="checkbox" name="" id="enableui" />
+            <label for="enableui">Enable UI</label>
+          </div>
+          <div>
+            <input type="checkbox" name="" id="enableads" />
+            <label for="enableads">Enable Ads</label>
+          </div>
+          <div>
+            <input type="checkbox" name="" id="enabletestad" />
+            <label for="enabletestad">Enable Test Ad</label>
+          </div>
+        </div>
+        <div>
+          <input type="checkbox" name="" id="createplayer" checked />
+          <label for="createplayer">Create Player Instance on Initialize</label>
+        </div>
+        <div>
+          <input type="checkbox" name="" id="prefetchplayer" checked />
+          <label for="prefetchplayer">Prefetch Player Files</label>
+        </div>
+        <div>
+          <input type="checkbox" name="" id="enabledebug" />
+          <label for="enabledebug">Enable Debug</label>
+        </div>
+        <br />
+        <button type="submit">Launch Demo</button>
+      </form>
+    </div>
+  </body>
+</html>

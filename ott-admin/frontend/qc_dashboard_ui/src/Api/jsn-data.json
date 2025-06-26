@@ -1,0 +1,42 @@
+[
+    {
+       "id":1,
+       "notificationId":1,
+       "date":"10:00 AM",
+       "userName":"Jhon Smith",
+       "notification":"Notifications have been designed to make it easy to scan.",
+       "userAvatar":"https://reactify.theironnetwork.org/data/images/user-1.jpg"
+    },
+    {
+       "id":2,
+       "notificationId":2,
+       "date":"10:02 AM",
+       "userName":"Jhon Smith",
+       "notification":"Notification’s most important elements.It easy to scan.",
+       "userAvatar":"https://reactify.theironnetwork.org/data/images/user-2.jpg"
+    },
+    {
+       "id":3,
+       "notificationId":3,
+       "date":"1:00 PM",
+       "userName":"Jass Smith",
+       "notification":"Notifications have been designed to make it easy to scan.",
+       "userAvatar":"https://reactify.theironnetwork.org/data/images/user-3.jpg"
+    },
+    {
+       "id":4,
+       "notificationId":1,
+       "date":"Yesterday",
+       "userName":"Rose Mic",
+       "notification":"Notification’s most important elements.It easy to scan.",
+       "userAvatar":"https://reactify.theironnetwork.org/data/images/user-4.jpg"
+    },
+    {
+       "id":5,
+       "notificationId":1,
+       "date":"Yesterday",
+       "userName":"Donatella",
+       "notification":"Donatella notification’s most important elements.It easy to scan.",
+       "userAvatar":"https://reactify.theironnetwork.org/data/images/user-5.jpg"
+    }
+ ]

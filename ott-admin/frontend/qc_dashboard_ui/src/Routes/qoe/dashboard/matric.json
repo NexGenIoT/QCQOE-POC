@@ -1,0 +1,209 @@
+[
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs":  "-",
+      "metric_key_name": "attempts",
+      "metricname": "Attempts",
+      "percentage":  "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs":  "-",
+      "hrs_change_48hrs":  "-",
+      "metric_key_name": "average_bitrate",
+      "metricname": "Avg. Bitrate",
+      "percentage":  "-",
+      "unit": "kbps"
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs":  "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "average_framerate",
+      "metricname": "Avg. Framerate",
+      "percentage": "-",
+      "unit": "fps"
+    },
+    {
+      "color": true,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "bandwidth",
+      "metricname": "Bandwidth",
+      "percentage": "-",
+      "unit": "mbps"
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "minutes_per_unique_devices",
+      "metricname": "Min. Per Unique Devices",
+      "percentage": "-",
+      "unit": "mins"
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "average_percentage_completion",
+      "metricname": "Avg. Pct. Completion",
+      "percentage": "-",
+      "unit": "%"
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "exit_before_video_starts",
+      "metricname": "EBVS",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "rebuffering_ratio",
+      "metricname": "ReBuff. Ratio",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "rebuffering_percentage",
+      "metricname": "ReBuff. Pct.",
+      "percentage": "-",
+      "unit": "%"
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "total_minutes_watched",
+      "metricname": "Total Min. Watched",
+      "percentage": "-",
+      "unit": "mins"
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "user_attrition",
+      "metricname": "User Attrition",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "succesful_plays",
+      "metricname": "Successful Plays",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "video_start_failures",
+      "metricname": "Video Start Failures",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "video_playback_failures",
+      "metricname": "Video Playback Failures",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "video_start_time",
+      "metricname": "Video Start Time",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "video_restart_time",
+      "metricname": "Video Restart Time",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "rendering_quality",
+      "metricname": "Rendering Quality",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "connection_induced_rebuffering_ratio",
+      "metricname": "CIRR",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "concurrent_plays",
+      "metricname": "Concurrent Plays",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "ended_plays",
+      "metricname": "Ended Plays",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "unique_devices",
+      "metricname": "Unique Devices",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "unique_viewers",
+      "metricname": "Unique Viewers",
+      "percentage": "-",
+      "unit": ""
+    },
+    {
+      "color": false,
+      "hrs_change_24hrs": "-",
+      "hrs_change_48hrs": "-",
+      "metric_key_name": "ended_plays_per_unique_devices",
+      "metricname": "Ended Plays/ Unique Devices",
+      "percentage": "-",
+      "unit": ""
+    }
+  ]

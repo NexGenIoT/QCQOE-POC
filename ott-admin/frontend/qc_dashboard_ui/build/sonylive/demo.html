@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SONY_lIVE</title>
+    <link rel="stylesheet" href="./assets/card.css" />
+    <link rel="stylesheet" href="./assets/qoeControls.css" />
+
+    <script src="./assets/qoesdk.js"></script>
+    <script src="./assets/qoeControls.js"></script>
+    <script src="https://static-assets.sonyliv.com/filesystem/platform/web/qoe/1.55.032103/spn-partner-sdk.js"></script>
+  </head>
+
+  <body>
+    <table>
+      <tr>
+        <th style="width: 100px">
+          <form id="authenticationForm">
+            <!-- Authorization Token: -->
+            <input
+              type="text"
+              id="authentication"
+              placeholder="Enter token without bearer string"
+              style="opacity: 0"
+            />
+            <input type="submit" value="Set Authentication" />
+          </form>
+        </th>
+        <th style="width: 100px">
+          <form id="customContentForm">
+            <!-- Content Id: -->
+            <input type="text" id="videoId" style="opacity: 0" />
+            <input type="submit" value="Play Content ID" />
+          </form>
+        </th>
+      </tr>
+    </table>
+
+    <br />
+
+    <div class="app-ui">
+      <div class="content-carousel" id="contentCarousel1"></div>
+    </div>
+
+    <div class="logs-container hide" id="logsContainer" style="opacity: 0">
+      <button id="toggleLogs"><span>Toggle Logs</span></button>
+      <h3>Logs <button id="clearLogs">Clear</button></h3>
+      <div id="logger"></div>
+    </div>
+
+    <div class="player-container" id="playerContainer">
+      <div class="player-wrapper" id="playerWrapper"></div>
+      <div class="ui-wrapper" style="opacity: 0">
+        <div id="buttonRow">
+          <button id="isPlaying">isPlaying</button>
+          <button id="togglePlay">Play</button>
+          <!-- <button id="playButton">Play</button>
+          <button id="pauseButton">Pause</button> -->
+          <button id="destroyPlayer">Destroy</button>
+          <button id="seekBackward">Rewind</button>
+          <button id="seekForward">Forward</button>
+          <button id="checkMultiAudio">CheckMultiAudio</button>
+          <button id="getMultiAudio">GetMultiAudio</button>
+          <button id="getDuration">GetDuration</button>
+          <button id="isSubtitle">IsSubtitleAvailable</button>
+          <button id="isSubtitleEnabled">IsSubtitleEnabled</button>
+          <button id="getSubtitle">GetSubtitleLanguages</button>
+          <button id="setSubtitleLanguage">SetSubtitleLanguages</button>
+          <button id="getCurrentPosition">GetCurrentPosition</button>
+          <button id="getPlaybackVariants">GetPlaybackVariants</button>
+          <button id="getCurrentPlaybackVariant">
+            GetCurrentPlaybackVariants
+          </button>
+          <button id="getTotalBufferedDuration">
+            getTotalBufferedDuration
+          </button>
+          <button id="seekToLastTenSec">SeekToLast10Sec</button>
+          <span id="output" class="output"></span>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("authentication").value =
+        localStorage.getItem("authToken");
+      document.getElementById("videoId").value =
+        localStorage.getItem("sonyAssetId");
+      // document.forms["authenticationForm"].submit();
+      // alert("click")
+      var auto_refresh = setTimeout(function () {
+        submitform();
+      }, 2000);
+
+      function submitform() {
+        // document.forms["authenticationForm"].submit();
+        //alert('abcd',auto_refresh)
+        document.getElementById("authenticationForm").click();
+        document.getElementById("customContentForm").click();
+      }
+
+      // document.getElementById('authBtnId').click();
+      // document.getElementById('playContentId').click();
+    </script>
+  </body>
+</html>

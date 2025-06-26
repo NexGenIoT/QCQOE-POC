@@ -1,0 +1,40 @@
+%flink.ssql
+
+CREATE TABLE `data_input_stream_2`(
+`cdn` string,
+`provider` string,
+`throughput_bits_per_second` BIGINT,
+`event` string,
+`event_prev` string,
+`latency_milliseconds` int,
+`vrt_milliseconds` int,
+`stall_duration_milliseconds` int,
+`duration_of_playback_seconds` int,
+`asset_duration_seconds` int,
+`record_id` string,
+`location` string,
+`udid` string,
+`location_city` string,
+`deviceType` string,
+`content_type` string,
+`platform` string,
+`sessionid` string,
+`timestamp` int,
+`event_time` timestamp(0),
+`framerate` int,
+`frameloss` int,
+`bitrate_bits_per_second` int,
+`networkType` string,
+`live` string,
+`drm` string,
+`has` string,
+`manufacturer` string,
+WATERMARK FOR event_time AS event_time - INTERVAL '10' SECOND
+)
+WITH (
+'connector' = 'kinesis',
+'stream' = 'realtime-input',
+'aws.region' = 'ap-south-1',
+'scan.stream.initpos' = 'LATEST',
+'format' = 'json'
+)

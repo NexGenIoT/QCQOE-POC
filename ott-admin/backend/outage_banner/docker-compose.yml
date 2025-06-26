@@ -1,0 +1,18 @@
+version: "3.4"
+services:
+  analytics_api:
+    image: qoe_outage_banner
+    build:
+      context: outage_banner
+    ports:
+      - "5009:80"
+    env_file:
+      - local.env
+    restart: unless-stopped
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: "ap-south-1"
+        awslogs-group: "qoe_outage_banner"
+        awslogs-create-group: "true"
+        tag: "{{.ImageName}}"
